@@ -38,7 +38,8 @@
   "trustedDependencies": [
     "@sveltejs/kit",
     "esbuild",
-    "svelte-preprocess"
+    "svelte-preprocess",
+    "workerd"
   ],
   "dependencies": {
     "bits-ui": "^0.21.13",
