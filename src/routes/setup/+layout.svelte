@@ -1,7 +1,4 @@
 <script lang="ts">
-	import '../app.css';
-	import { ModeWatcher } from 'mode-watcher';
-
 	interface Props {
 		children: import('svelte').Snippet;
 	}
@@ -9,7 +6,6 @@
 	const { children }: Props = $props();
 </script>
 
-<ModeWatcher />
-<div class="min-h-screen">
+<main class="gird mx-auto min-h-screen place-content-center space-y-8 px-4 md:w-1/2">
 	{@render children()}
-</div>
+</main>
