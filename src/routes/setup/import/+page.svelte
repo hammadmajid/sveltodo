@@ -34,7 +34,7 @@
 
 			reader.readAsText(form.data.file);
 
-			goto('/settings');
+			goto('/todos');
 		}
 	});
 

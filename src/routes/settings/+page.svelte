@@ -21,7 +21,7 @@
 
 <main class="mx-auto my-12 space-y-12 px-4 md:w-1/2">
 	<div class="space-y-4">
-		<Button class="p-0" href="/" variant="link"><ChevronLeft /> Go back</Button>
+		<Button class="p-0" href="/todos" variant="link"><ChevronLeft /> Go back</Button>
 		<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Settings</h1>
 	</div>
 	<div class="space-y-4">

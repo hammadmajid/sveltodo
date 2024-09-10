@@ -8,7 +8,7 @@
 	onMount(() => {
 		createTodoTxt = () => {
 			localStorage.setItem('todos.txt', '');
-			goto('/settings');
+			goto('/todos');
 		};
 	});
 </script>
