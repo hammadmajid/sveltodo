@@ -1,6 +1,16 @@
-<script>
-	import { enhance } from '$app/forms';
-	import { Upload, CirclePlus } from 'lucide-svelte';
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { CirclePlus, Upload } from 'lucide-svelte';
+	import { onMount } from 'svelte';
+
+	let createTodoTxt: () => void;
+
+	onMount(() => {
+		createTodoTxt = () => {
+			localStorage.setItem('todos.txt', '');
+			goto('/settings');
+		};
+	});
 </script>
 
 <svelte:head>
@@ -14,17 +24,17 @@
 	</p>
 </div>
 
-<form method="POST" use:enhance class="flex items-center justify-center gap-2">
+<div class="flex items-center justify-center gap-2 px-4">
 	<a href="/setup/import" class="block">
 		<div class="flex items-center justify-center gap-2 rounded-md border bg-muted p-12">
 			<Upload />
 			Import
 		</div>
 	</a>
-	<button type="submit">
+	<button type="submit" onclick={createTodoTxt}>
 		<div class="flex items-center justify-center gap-2 rounded-md border bg-muted p-12">
 			<CirclePlus />
 			Create
 		</div>
 	</button>
-</form>
+</div>
