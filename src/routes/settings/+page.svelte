@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronLeft, Github, Moon, SquarePen, Sun, Trash } from 'lucide-svelte';
+	import { ChevronLeft, Github, Moon, Save, SquarePen, Sun, Trash } from 'lucide-svelte';
 
 	import { goto } from '$app/navigation';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
@@ -32,6 +32,16 @@
 
 		todos = getTodos();
 	});
+
+	function exportTodoTxt() {
+		const blob = new Blob([JSON.stringify(todos)], { type: 'text/plain' });
+		const url = URL.createObjectURL(blob);
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = 'todo.txt';
+		a.click();
+		URL.revokeObjectURL(url);
+	}
 </script>
 
 <main class="lg:1/2 mx-auto my-12 space-y-12 px-4 md:w-3/4">
@@ -88,6 +98,13 @@
 					</Dialog.Footer>
 				</Dialog.Content>
 			</Dialog.Root>
+		</div>
+		<div class="flex items-center justify-between">
+			<p>Export todo.txt</p>
+			<Button variant="outline" on:click={exportTodoTxt} class="flex items-center gap-2">
+				<Save class="w-4"/>
+				Export
+			</Button>
 		</div>
 		<div class="flex items-center justify-between">
 			<p>Delete todo.txt</p>
