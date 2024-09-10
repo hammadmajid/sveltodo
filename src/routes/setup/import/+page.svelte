@@ -1,14 +1,15 @@
 <script lang="ts">
-	import SuperDebug, { superForm, defaults } from 'sveltekit-superforms';
+	import { superForm, defaults } from 'sveltekit-superforms';
 	import { zod, zodClient } from 'sveltekit-superforms/adapters';
 	import { z } from 'zod';
 
 	import * as Form from '$lib/components/ui/form/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 
-	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { Button } from '$lib/components/ui/button';
+	import { ChevronLeft } from 'lucide-svelte';
 
 	let todos: (content: string) => void;
 	onMount(() => {
@@ -45,15 +46,20 @@
 	<title>Import</title>
 </svelte:head>
 
-<form method="POST" enctype="multipart/form-data" class="space-y-4" use:enhance>
+<form method="POST" enctype="multipart/form-data" class="space-y-8" use:enhance>
 	{#if $message}
 		<p>{message}</p>
 	{/if}
 
-	<div>
+	<div class="space-y-4">
+		<Button class="p-0" href="/setup" variant="link"><ChevronLeft /> Go back</Button>
+		<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Select file</h1>
+	</div>
+
+	<div class="space-y-2">
 		<Form.Field {form} name="file">
 			<Form.Control let:attrs>
-				<Form.Label>Select file</Form.Label>
+				<Form.Label class="sr-only">Select file</Form.Label>
 				<Input
 					{...attrs}
 					type="file"
@@ -64,10 +70,6 @@
 			<Form.FieldErrors />
 		</Form.Field>
 
-		<Form.Button disabled={$delayed}>Submit</Form.Button>
+		<Form.Button disabled={$delayed} class="w-full">Submit</Form.Button>
 	</div>
-
-	{#if browser}
-		<SuperDebug data={$formData} />
-	{/if}
 </form>

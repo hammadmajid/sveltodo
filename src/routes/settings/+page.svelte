@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronLeft, Moon, Sun } from 'lucide-svelte';
+	import { ChevronLeft, Github, Moon, Sun } from 'lucide-svelte';
 
 	import { goto } from '$app/navigation';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
@@ -68,4 +68,10 @@
 			</AlertDialog.Root>
 		</div>
 	</div>
+	<p class="text-center">
+		<Button class="flex gap-2" href="https://github.com/hammadmajid/sveltodo" variant="link">
+			<Github />
+			hammadmajid/sveltodo
+		</Button>
+	</p>
 </main>

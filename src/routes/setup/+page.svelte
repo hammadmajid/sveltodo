@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { Button } from '$lib/components/ui/button';
 	import { CirclePlus, Upload } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 
@@ -24,17 +25,16 @@
 	</p>
 </div>
 
-<div class="flex items-center justify-center gap-2 px-4">
+<div class="flex flex-col items-center justify-center gap-3 px-4 md:flex-row">
 	<a href="/setup/import" class="block">
-		<div class="flex items-center justify-center gap-2 rounded-md border bg-muted p-12">
+		<Button variant="outline" class="flex gap-2 p-12">
 			<Upload />
 			Import
-		</div>
+		</Button>
 	</a>
-	<button type="submit" onclick={createTodoTxt}>
-		<div class="flex items-center justify-center gap-2 rounded-md border bg-muted p-12">
-			<CirclePlus />
-			Create
-		</div>
-	</button>
+	<!-- <button type="submit" onclick={createTodoTxt}> -->
+	<Button variant="outline" class="flex gap-2 p-12" on:click={createTodoTxt}>
+		<CirclePlus />
+		Create
+	</Button>
 </div>
